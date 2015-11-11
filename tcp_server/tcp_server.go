@@ -27,7 +27,7 @@ func main() {
 	}
 }
 
-func handleConnection(c net.Conn, out chan byte) {
+func handleConnection(c net.Conn, out chan []byte) {
 	fmt.Println("connection found")
 	buf := make([]byte, 1024)
 	readLength, err := c.Read(buf)
