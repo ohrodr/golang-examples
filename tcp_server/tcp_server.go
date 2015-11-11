@@ -28,19 +28,13 @@ func main() {
 }
 
 func handleConnection(c net.Conn, out chan byte) {
-	//defer c.Close()
 	fmt.Println("connection found")
 	buf := make([]byte, 1024)
-	for i := 0; i < len(buf); i++ {
-		readLength, err := c.Read(buf)
-		fmt.Println(fmt.Sprintf("bytes read: %d", readLength))
-		if err != nil {
-			fmt.Println("Error reading:", err.Error())
-		}
+	readLength, err := c.Read(buf)
+	fmt.Println(fmt.Sprintf("bytes read: %d", readLength))
+	if err != nil {
+		fmt.Println("Error reading:", err.Error())
 	}
 	c.Write([]byte("Message received."))
-	for _, i := range buf {
-		out <- i
-	}
-
+	out <- buf
 }
