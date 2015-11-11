@@ -28,7 +28,7 @@ func main() {
 }
 
 func handleConnection(c net.Conn, out chan byte) {
-	defer c.Close()
+	//defer c.Close()
 	fmt.Println("connection found")
 	buf := make([]byte, 1024)
 	readLength, err := c.Read(buf)
