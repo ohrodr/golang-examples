@@ -6,7 +6,7 @@ import "os"
 
 func main() {
 	listen_sock, err := net.Listen("tcp", ":2888")
-	recv_chan := make(chan byte)
+	recv_chan := make(chan []byte)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
